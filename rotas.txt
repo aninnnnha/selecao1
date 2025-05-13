@@ -1,0 +1,4 @@
+POST	/candidatos	Cadastra novo candidato
+GET	/candidatos	Lista todos candidatos
+GET	/candidatos/:id	Busca candidato por id
+PATCH	/candidatos/:id	Atualiza a nota do candidato
