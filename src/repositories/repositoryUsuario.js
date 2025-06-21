@@ -5,7 +5,7 @@ async function ListarByEmail(email){
     if(user.length == 0)
         return []
     else
-        return user[0];
+        return user;
 }
 
 async function Inserir(nome, sobrenome, email, senha){
