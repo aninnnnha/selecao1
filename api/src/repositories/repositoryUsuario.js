@@ -1,18 +1,16 @@
-import con from "../database/connection.js";
-async function ListarByEmail(email){
-    let sql = "SELECT * FROM usuarios WHERE EMAIL = ?";
-    const [user] = await (con.connection).execute(sql, [email]);
-    if(user.length == 0)
-        return []
-    else
-        return user[0];
+import db from "../database/connection.js";
+
+async function ListarByEmail(email) {
+  const con = await db.getConnection();
+  const [user] = await con.execute("SELECT * FROM usuarios WHERE email = ?", [email]);
+  return user.length === 0 ? [] : user[0];
 }
 
-async function Inserir(nome, sobrenome, email, senha){
-    let sql = "INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?,?,?,?)";
-    const [user] = await (con.connection).query(sql, [nome, sobrenome, email, senha]);
-    return user;
+async function Inserir(nome, sobrenome, email, senha) {
+  const con = await db.getConnection();
+  let sql = "INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?,?,?,?)";
+  const [result] = await con.query(sql, [nome, sobrenome, email, senha]);
+  return result;
 }
 
-
-export default {ListarByEmail, Inserir}
+export default { ListarByEmail, Inserir };
