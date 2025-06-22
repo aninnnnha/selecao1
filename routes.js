@@ -1,5 +1,5 @@
 import { Router } from "express";
-import controllerAluno from "../API ana/src/controllers/candidatoController.js";
+import controllerAluno from "../src/controllers/candidatoController.js";
 const router = Router();
 router.get("/", (req, res) =>{
     res.status(200).send("Pagina HOME")
