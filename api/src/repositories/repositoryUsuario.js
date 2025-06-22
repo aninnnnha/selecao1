@@ -27,7 +27,7 @@ async function Inserir(nome, sobrenome, email, senha) {
 async function Listar() {
   try {
     const con = await db.getConnection();
-    const [rows] = await con.query("SELECT id, nome, sobrenome, email FROM usuarios");
+    const [rows] = await con.query("SELECT nome, sobrenome, email FROM usuarios");
     return rows;
   } catch (error) {
     console.error("Erro no repository Listar:", error);
