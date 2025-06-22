@@ -42,5 +42,14 @@ async function Inserir(req, res) {
     return res.status(500).json({ error: "Erro interno do servidor." });
   }
 }
+async function Listar(req, res) {
+  try {
+    const usuarios = await serviceUsuario.Listar();
+    return res.status(200).json(usuarios);
+  } catch (error) {
+    console.error("Erro ao listar usuários:", error);
+    return res.status(500).json({ error: "Erro interno do servidor." });
+  }
+}
 
-export default { Login, Inserir };
+export default { Login, Inserir, Listar };
